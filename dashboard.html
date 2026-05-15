@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Volt Admin</title>
+
+  <link rel="stylesheet"
+        href="dashboard.css">
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div>
+
+      <h1 class="logo">
+        VOLT ADMIN
+      </h1>
+
+      <nav>
+
+        <a href="#aboutSection">
+          About Image
+        </a>
+
+        <a href="#servicesSection">
+          Services
+        </a>
+
+        <a href="#projectsSection">
+          Projects
+        </a>
+
+        <a href="#reviewsSection">
+          Reviews
+        </a>
+
+      </nav>
+
+    </div>
+
+    <button id="logoutBtn"
+            class="logout-btn">
+
+      Logout
+
+    </button>
+
+  </aside>
+
+
+  <!-- CONTENT -->
+  <main class="main-content">
+
+    <div class="topbar">
+
+      <h2>
+        Volt Painters Dashboard
+      </h2>
+
+    </div>
+
+
+    <!-- ABOUT -->
+    <section class="card"
+             id="aboutSection">
+
+      <h3>About Us Image</h3>
+
+      <input type="file"
+             id="aboutUpload">
+
+      <button id="aboutBtn">
+        Upload About Image
+      </button>
+
+      <div id="aboutPreview"></div>
+
+    </section>
+
+
+
+    <!-- SERVICES -->
+    <section class="card"
+             id="servicesSection">
+
+      <h3>Services</h3>
+
+      <input type="text"
+             id="serviceTitle"
+             placeholder="Service Title">
+
+      <textarea id="serviceDescription"
+                placeholder="Service Description"></textarea>
+
+      <input type="file"
+             id="serviceImage">
+
+      <button id="serviceBtn">
+        Upload Service
+      </button>
+
+      <div id="servicesPreview"></div>
+
+    </section>
+
+
+
+    <!-- PROJECTS -->
+    <section class="card"
+             id="projectsSection">
+
+      <h3>Projects</h3>
+
+      <input type="file"
+             id="imageUpload"
+             multiple>
+
+      <button id="uploadBtn">
+        Upload Project
+      </button>
+
+      <p id="uploadStatus"></p>
+
+      <div class="projects-list"
+           id="projectContainer"></div>
+
+    </section>
+
+
+
+    <!-- REVIEWS -->
+    <section class="card"
+             id="reviewsSection">
+
+      <h3>Client Reviews</h3>
+
+      <input type="text"
+             id="reviewName"
+             placeholder="Client Name">
+
+      <input type="text"
+             id="reviewRole"
+             placeholder="Client Role">
+
+      <textarea id="reviewText"
+                placeholder="Review Description"></textarea>
+
+      <input type="number"
+             id="reviewStars"
+             placeholder="Stars (5)">
+
+      <input type="file"
+             id="reviewImage">
+
+      <button id="reviewBtn">
+        Upload Review
+      </button>
+
+      <div id="reviewsContainer"></div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module"
+        src="dashboard.js"></script>
+
+</body>
+</html>

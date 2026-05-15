@@ -21,15 +21,27 @@
     <img src="images/logo.png" class="logo">
 
     <nav>
-      <a href="#">HOME</a>
-      <a href="#">ABOUT</a>
-      <a href="#">SERVICES</a>
-      <a href="#">PROJECTS</a>
-      <a href="#">REVIEWS</a>
-      <a href="#">CONTACT</a>
-    </nav>
 
-    <a href="#" class="quote-btn">ENQUIRE NOW</a>
+  <a href="#">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#services">SERVICES</a>
+  <a href="#projects">PROJECTS</a>
+  <a href="#reviews">REVIEWS</a>
+  <a href="#contact">CONTACT</a>
+
+</nav>
+
+<div class="nav-buttons">
+
+  <a href="#" class="quote-btn">
+    ENQUIRE NOW
+  </a>
+
+    <a href="login.html" class="login-btn">
+    LOGIN
+  </a>
+
+</div>
 
   </div>
 </header>
@@ -52,7 +64,7 @@
 
       <div class="hero-buttons">
         <a href="#" class="yellow-btn">ENQUIRE NOW</a>
-        <a href="#" class="dark-btn">OUR SERVICES</a>
+        <a href="#services" class="dark-btn">OUR SERVICES</a>
       </div>
 
     </div>
@@ -63,7 +75,7 @@
 
 
 <!-- ABOUT -->
-<section class="about">
+<section class="about" id="about">
 
   <div class="container about-grid">
 
@@ -84,7 +96,7 @@
       <a href="#" class="yellow-btn">LEARN MORE</a>
     </div>
     
-    <img src="images/2ndpage.jpg">
+    <img id="aboutImage">
 
   </div>
 
@@ -93,7 +105,7 @@
 
 
 <!-- SERVICES -->
-<section class="services">
+<section class="services" id="services">
 
   <div class="container">
 
@@ -105,33 +117,10 @@
       WHAT WE OFFER
     </h2>
 
-    <div class="services-grid">
+   <div class="services-grid" id="servicesContainer"></div>
+   
 
-      <div class="service-card">
-         <img src="images/house.jpg" class="service-icon">
-        <h3>ROOF PAINTING</h3>
-        <p>Protect your roof with quality finishes.</p>
-      </div>
-
-      <div class="service-card">
-        <img src="images/exterior.jpg" class="service-icon">
-        <h3>EXTERIOR PAINTING</h3>
-        <p>Fresh exterior painting for your property.</p>
-      </div>
-
-      <div class="service-card">
-        <img src="images/interior.jpg" class="service-icon">
-        <h3>INTERIOR PAINTING</h3>
-        <p>Modern interior painting solutions.</p>
-      </div>
-
-      <div class="service-card">
-        <img src="images/decorative.jpg" class="service-icon">
-        <h3>DECORATIVE FINISHES</h3>
-        <p>Professional decorative painting services.</p>
-      </div>
-
-    </div>
+</div>
 
   </div>
 
@@ -140,7 +129,7 @@
 
 
 <!-- PROJECTS -->
-<section class="projects">
+<section class="projects" id="projects">
 
   <div class="container">
 
@@ -152,31 +141,7 @@
       RECENT PROJECTS
     </h2>
 
-    <div class="projects-grid">
-
-      <a href="firstproject/1.jpg" data-lightbox="projects">
-        <img src="firstproject/1.jpg">
-      </a>
-
-      <a href="firstproject/2.jpg" data-lightbox="projects">
-        <img src="firstproject/2.jpg">
-      </a>
-
-      <a href="firstproject/3.jpg" data-lightbox="projects">
-        <img src="firstproject/3.jpg">
-      </a>
-
-      <a href="firstproject/4.jpg" data-lightbox="projects">
-        <img src="firstproject/4.jpg">
-      </a>
-
-      <a href="firstproject/5.jpg" data-lightbox="projects">
-        <img src="firstproject/5.jpg">
-      </a>
-
-      <a href="firstproject/6.jpg" data-lightbox="projects">
-        <img src="firstproject/6.jpg">
-      </a>
+    <div class="projects-grid" id="projectsGrid">
 
     </div>
 
@@ -187,7 +152,7 @@
 
 
 <!-- REVIEWS -->
-<section class="reviews">
+<section class="reviews" id="reviews">
 
   <div class="container">
 
@@ -199,16 +164,9 @@
       WHAT OUR CLIENTS SAY
     </h2>
 
-    <div class="review-box">
-
-      <p>
-        “Very professional and reliable.
-        Our roof looks brand new!”
-      </p>
-
-      <h4>- Happy Client, Taupo</h4>
-
-    </div>
+<div class="reviews-grid"
+     id="reviewsGrid">
+</div>
 
   </div>
 
@@ -217,11 +175,14 @@
 
 
 <!-- CONTACT -->
-<section class="contact">
+<section class="contact" id="contact">
 
   <div class="container contact-grid">
 
     <div>
+      <img src="images/logo2.png"
+     class="contact-logo">
+
       <p class="small-title">NEED A QUOTE?</p>
 
       <h2>
@@ -233,20 +194,62 @@
       </p>
 
       <a href="#" class="dark-btn">
-        +64 22 073 6042
+        022 0736 042
       </a>
 
     </div>
 
-    <div class="contact-info">
+<div class="contact-right">
 
-      <p><b>PHONE</b><br>+64 22 073 6042</p>
+  <div class="contact-item">
 
-      <p><b>EMAIL</b><br>office@voltpainters.co.nz</p>
-
-      <p><b>LOCATION</b><br>Taupo, Waikato, New Zealand</p>
-
+    <div class="contact-icon">
+      ☎
     </div>
+
+    <div>
+      <h4>PHONE</h4>
+
+      <a href="tel:+64220736042">
+        022 0736 042
+      </a>
+    </div>
+
+  </div>
+
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ✉
+    </div>
+
+    <div>
+      <h4>EMAIL</h4>
+
+      <a href="mailto:office@voltpainters.co.nz">
+        office@voltpainters.co.nz
+      </a>
+    </div>
+
+  </div>
+
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      📍
+    </div>
+
+    <div>
+      <h4>LOCATION</h4>
+
+      <p>Taupo, Waikato, New Zealand</p>
+    </div>
+
+  </div>
+
+</div>
 
   </div>
 
@@ -269,6 +272,8 @@
 
 </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox-plus-jquery.min.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>

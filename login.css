@@ -1,0 +1,147 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#0f0f0f;
+  overflow:hidden;
+}
+
+/* MAIN */
+.login-container{
+  display:flex;
+  min-height:100vh;
+}
+
+/* LEFT SIDE */
+.login-left{
+  flex:1;
+  position:relative;
+
+  background:url("images/interior.jpg");
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+}
+
+.left-content{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  max-width:500px;
+  padding:40px;
+}
+
+.login-logo{
+  width:140px;
+  margin-bottom:30px;
+}
+
+.left-content h1{
+  font-size:60px;
+  line-height:1;
+  margin-bottom:20px;
+  font-weight:800;
+}
+
+.left-content p{
+  font-size:18px;
+  color:#ddd;
+  line-height:1.7;
+}
+
+/* RIGHT SIDE */
+.login-right{
+  width:500px;
+  background:#111;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:40px;
+}
+
+.login-box{
+  width:100%;
+}
+
+.small-text{
+  color:#f4c400;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.login-box h2{
+  color:#fff;
+  font-size:42px;
+  margin-bottom:40px;
+}
+
+.login-box input{
+  width:100%;
+  background:#1d1d1d;
+  border:1px solid #2a2a2a;
+  color:#fff;
+
+  padding:18px;
+  border-radius:14px;
+
+  margin-bottom:20px;
+
+  font-size:15px;
+}
+
+.login-box input:focus{
+  outline:none;
+  border-color:#f4c400;
+}
+
+.login-box button{
+  width:100%;
+  padding:18px;
+
+  border:none;
+  border-radius:14px;
+
+  background:#f4c400;
+  color:#111;
+
+  font-size:16px;
+  font-weight:700;
+
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.login-box button:hover{
+  transform:translateY(-3px);
+  opacity:0.95;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .login-left{
+    display:none;
+  }
+
+  .login-right{
+    width:100%;
+  }
+
+}
