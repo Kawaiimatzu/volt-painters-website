@@ -213,11 +213,15 @@ nav a{
 }
 
 .services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
   gap:30px;
   margin-top:60px;
-  align-items:stretch;
+}
+
+.services-grid::after{
+  content:"";
 }
 
 .service-card{
@@ -233,6 +237,8 @@ nav a{
   flex-direction:column;
   justify-content:flex-start;
   align-items:center;
+
+  width:280px;
 }
 
 .service-card:hover{
