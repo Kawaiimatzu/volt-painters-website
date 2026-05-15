@@ -190,3 +190,153 @@ async function loadReviews(){
 }
 
 loadReviews();
+
+setTimeout(() => {
+
+  createSlider();
+
+}, 300);
+
+const sliderDots =
+document.getElementById("sliderDots");
+
+let currentSlide = 0;
+
+function createSlider(){
+
+  const cards =
+  document.querySelectorAll(".review-card");
+
+  const totalSlides =
+  Math.ceil(cards.length / 3);
+
+  sliderDots.innerHTML = "";
+
+  for(let i = 0; i < totalSlides; i++){
+
+    const dot =
+    document.createElement("span");
+
+    if(i === 0){
+      dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+
+      currentSlide = i;
+
+      updateSlider();
+
+    });
+
+    sliderDots.appendChild(dot);
+
+  }
+
+}
+
+function updateSlider(){
+
+  const wrapper =
+  document.querySelector(".reviews-slider-wrapper");
+
+  const slideWidth =
+  wrapper.offsetWidth;
+
+  reviewsGrid.style.transform =
+  `translateX(-${currentSlide * slideWidth}px)`;
+
+  document
+  .querySelectorAll(".slider-dots span")
+  .forEach(dot =>
+    dot.classList.remove("active")
+  );
+
+  document
+  .querySelectorAll(".slider-dots span")
+  [currentSlide]
+  .classList.add("active");
+
+}
+
+setInterval(() => {
+
+  const totalSlides =
+  document.querySelectorAll(".slider-dots span").length;
+
+  currentSlide++;
+
+  if(currentSlide >= totalSlides){
+
+    currentSlide = 0;
+
+  }
+
+  updateSlider();
+
+}, 4000);
+
+let startX = 0;
+let endX = 0;
+
+reviewsGrid.addEventListener("mousedown", (e) => {
+
+  startX = e.clientX;
+
+});
+
+reviewsGrid.addEventListener("mouseup", (e) => {
+
+  endX = e.clientX;
+
+  handleSwipe();
+
+});
+
+reviewsGrid.addEventListener("touchstart", (e) => {
+
+  startX = e.touches[0].clientX;
+
+});
+
+reviewsGrid.addEventListener("touchend", (e) => {
+
+  endX = e.changedTouches[0].clientX;
+
+  handleSwipe();
+
+});
+
+function handleSwipe(){
+
+  const totalSlides =
+  document.querySelectorAll(".slider-dots span").length;
+
+  if(startX - endX > 50){
+
+    currentSlide++;
+
+    if(currentSlide >= totalSlides){
+
+      currentSlide = 0;
+
+    }
+
+  }
+
+  else if(endX - startX > 50){
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+
+      currentSlide =
+      totalSlides - 1;
+
+    }
+
+  }
+
+  updateSlider();
+
+}
