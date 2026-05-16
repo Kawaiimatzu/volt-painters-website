@@ -258,6 +258,19 @@ document.getElementById("servicesPreview");
 // UPLOAD SERVICE
 serviceBtn.addEventListener("click", async () => {
 
+  const servicesSnapshot =
+await getDocs(collection(db, "services"));
+
+if(servicesSnapshot.size >= 7){
+
+  alert(
+    "Maximum of 7 services only. Contact developer to add more."
+  );
+
+  return;
+}
+
+
   const title =
   document.getElementById("serviceTitle").value;
 
@@ -344,7 +357,7 @@ async function loadServices(){
     `;
 
   });
-
+checkServicesLimit();
 }
 
 loadServices();
@@ -479,3 +492,31 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 
 });
+
+async function checkServicesLimit(){
+
+  const servicesSnapshot =
+  await getDocs(collection(db, "services"));
+
+  const serviceBtn =
+  document.getElementById("serviceBtn");
+
+  if(servicesSnapshot.size >= 7){
+
+    serviceBtn.disabled = true;
+
+    serviceBtn.innerText =
+    "LIMIT REACHED";
+
+  }
+
+  else{
+
+    serviceBtn.disabled = false;
+
+    serviceBtn.innerText =
+    "Upload Service";
+
+  }
+
+}

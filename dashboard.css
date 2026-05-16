@@ -116,6 +116,11 @@ button{
   transition:0.3s;
 }
 
+button:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
 button:hover{
   opacity:0.9;
   transform:translateY(-2px);
@@ -156,6 +161,14 @@ button:hover{
   margin-top:15px;
   color:#f4c400;
   font-weight:600;
+}
+
+.section-info{
+  color:#888;
+  font-size:14px;
+  margin-top:-10px;
+  margin-bottom:25px;
+  line-height:1.6;
 }
 
 /* MOBILE */

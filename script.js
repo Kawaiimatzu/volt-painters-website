@@ -108,20 +108,26 @@ async function loadServices(){
 
     const service = doc.data();
 
-    servicesContainer.innerHTML += `
+servicesContainer.innerHTML += `
 
-      <div class="service-card">
+  <div class="service-card">
 
-        <img src="${service.image}"
-             class="service-icon">
+    <img src="${service.image}"
+         class="service-bg">
 
-        <h3>${service.title}</h3>
+    <div class="service-overlay"></div>
 
-        <p>${service.description}</p>
+    <div class="service-content">
 
-      </div>
+      <h3>${service.title}</h3>
 
-    `;
+      <p>${service.description}</p>
+
+    </div>
+
+  </div>
+
+`;
 
   });
 
@@ -207,8 +213,14 @@ function createSlider(){
   const cards =
   document.querySelectorAll(".review-card");
 
+  let cardsPerSlide = 3;
+
+  if(window.innerWidth <= 768){
+    cardsPerSlide = 1;
+  }
+
   const totalSlides =
-  Math.ceil(cards.length / 3);
+  Math.ceil(cards.length / cardsPerSlide);
 
   sliderDots.innerHTML = "";
 
@@ -237,11 +249,19 @@ function createSlider(){
 
 function updateSlider(){
 
-  const wrapper =
-  document.querySelector(".reviews-slider-wrapper");
+  let slideWidth;
 
-  const slideWidth =
-  wrapper.offsetWidth;
+  if(window.innerWidth <= 768){
+
+    slideWidth =
+    document.querySelector(".review-card").offsetWidth + 30;
+
+  }else{
+
+    slideWidth =
+    (document.querySelector(".review-card").offsetWidth * 3) + 60;
+
+  }
 
   reviewsGrid.style.transform =
   `translateX(-${currentSlide * slideWidth}px)`;
@@ -252,10 +272,14 @@ function updateSlider(){
     dot.classList.remove("active")
   );
 
-  document
-  .querySelectorAll(".slider-dots span")
-  [currentSlide]
-  .classList.add("active");
+  if(document.querySelectorAll(".slider-dots span")[currentSlide]){
+
+    document
+    .querySelectorAll(".slider-dots span")
+    [currentSlide]
+    .classList.add("active");
+
+  }
 
 }
 
@@ -276,22 +300,7 @@ setInterval(() => {
 
 }, 4000);
 
-let startX = 0;
-let endX = 0;
 
-reviewsGrid.addEventListener("mousedown", (e) => {
-
-  startX = e.clientX;
-
-});
-
-reviewsGrid.addEventListener("mouseup", (e) => {
-
-  endX = e.clientX;
-
-  handleSwipe();
-
-});
 
 reviewsGrid.addEventListener("touchstart", (e) => {
 
@@ -338,5 +347,68 @@ function handleSwipe(){
   }
 
   updateSlider();
+
+}
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let isDragging = false;
+
+reviewsGrid.addEventListener("touchstart", touchStart);
+reviewsGrid.addEventListener("touchmove", touchMove);
+reviewsGrid.addEventListener("touchend", touchEnd);
+
+function touchStart(e){
+
+  startX = e.touches[0].clientX;
+  isDragging = true;
+
+}
+
+function touchMove(e){
+
+  if(!isDragging) return;
+
+  const currentX = e.touches[0].clientX;
+  const diff = currentX - startX;
+
+  reviewsGrid.style.transform =
+  `translateX(${prevTranslate + diff}px)`;
+
+}
+
+function touchEnd(e){
+
+  isDragging = false;
+
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if(diff < -50){
+
+    currentSlide++;
+
+  }else if(diff > 50){
+
+    currentSlide--;
+
+  }
+
+  const totalSlides =
+  document.querySelectorAll(".slider-dots span").length;
+
+  if(currentSlide < 0){
+    currentSlide = 0;
+  }
+
+  if(currentSlide >= totalSlides){
+    currentSlide = totalSlides - 1;
+  }
+
+  updateSlider();
+
+  prevTranslate =
+  -currentSlide *
+  document.querySelector(".review-card").offsetWidth;
 
 }
