@@ -20,7 +20,7 @@ localStorage.getItem("voltAdmin");
 
 if(isLoggedIn !== "true"){
 
-  window.location.href = "login.html";
+    window.location.href = "/login";
 
 }
 
@@ -489,6 +489,6 @@ logoutBtn.addEventListener("click", () => {
 
   localStorage.removeItem("voltAdmin");
 
-  window.location.href = "login.html";
+  window.location.href = "/login";
 
 });

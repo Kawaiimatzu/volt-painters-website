@@ -21,7 +21,8 @@ localStorage.getItem("voltAdmin");
 
 if(isLoggedIn === "true"){
 
-  window.location.href = "dashboard.html";
+  window.location.href = "/dashboard";
+
 
 }
 
@@ -44,7 +45,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
 
       localStorage.setItem("voltAdmin", "true");
 
-      window.location.href = "dashboard.html";
+    window.location.href = "/dashboard";
 
     })
 
