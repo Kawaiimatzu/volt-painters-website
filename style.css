@@ -42,7 +42,7 @@ nav{
 }
 
 .logo{
-  width:120px;
+  width:180px;
   height:auto;
   object-fit:contain;
 }
@@ -655,9 +655,9 @@ footer{
     font-size:12px;
   }
 
-  .logo{
-    width:100px;
-  }
+ .logo{
+  width:130px;
+}
 
   /* HERO */
   .hero{
