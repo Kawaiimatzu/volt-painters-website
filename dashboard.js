@@ -20,7 +20,7 @@ localStorage.getItem("voltAdmin");
 
 if(isLoggedIn !== "true"){
 
-    window.location.href = "/login";
+   window.location.href = "/login/";
 
 }
 
@@ -177,6 +177,17 @@ document.getElementById("aboutBtn");
 
 aboutBtn.addEventListener("click", async () => {
 
+  const existingAbout =
+  document.querySelector("#aboutPreview img");
+
+  if(existingAbout){
+
+    alert("Delete current About Image first.");
+
+    return;
+
+  }
+
   const file =
   document.getElementById("aboutUpload").files[0];
 
@@ -208,9 +219,12 @@ aboutBtn.addEventListener("click", async () => {
 
   });
 
-  alert("About Image Updated!");
+alert("About Image Updated!");
 
-  loadAboutPreview();
+aboutBtn.disabled = true;
+aboutBtn.style.opacity = "0.5";
+
+loadAboutPreview();
 
 });
 async function loadAboutPreview(){
@@ -225,19 +239,25 @@ async function loadAboutPreview(){
 
     const data = docSnap.data();
 
-    aboutPreview.innerHTML = `
+    if(data.image){
 
-      <div class="admin-project">
+      aboutBtn.disabled = true;
+      aboutBtn.style.opacity = "0.5";
 
-        <img src="${data.image}">
+      aboutPreview.innerHTML = `
 
-        <button onclick="deleteAboutImage()">
-          Delete
-        </button>
+        <div class="admin-project">
 
-      </div>
+          <img src="${data.image}">
+
+          <button onclick="deleteAboutImage()">
+            Delete
+          </button>
+
+        </div>
 
     `;
+        }
 
   }
 
@@ -255,6 +275,9 @@ async function(){
   });
 
   aboutPreview.innerHTML = "";
+
+  aboutBtn.disabled = false;
+aboutBtn.style.opacity = "1";
 
 }
 const serviceBtn =
@@ -489,6 +512,6 @@ logoutBtn.addEventListener("click", () => {
 
   localStorage.removeItem("voltAdmin");
 
-  window.location.href = "/login";
+  window.location.href = "/login/";
 
 });
