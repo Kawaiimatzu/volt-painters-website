@@ -261,16 +261,6 @@ serviceBtn.addEventListener("click", async () => {
   const servicesSnapshot =
 await getDocs(collection(db, "services"));
 
-if(servicesSnapshot.size >= 7){
-
-  alert(
-    "Maximum of 7 services only. Contact developer to add more."
-  );
-
-  return;
-}
-
-
   const title =
   document.getElementById("serviceTitle").value;
 
@@ -340,28 +330,23 @@ async function loadServices(){
 
     servicesPreview.innerHTML += `
 
-  <div class="admin-project">
+      <div class="admin-project">
 
-    <img src="${service.image}">
+        <img src="${service.image}">
 
-    <div class="admin-project-content">
+        <h3>${service.title}</h3>
 
-      <h4>${service.title}</h4>
+        <p>${service.description}</p>
 
-      <p>${service.description}</p>
+        <button onclick="deleteService('${serviceDoc.id}')">
+          Delete
+        </button>
 
-    </div>
+      </div>
 
-    <button onclick="deleteService('${serviceDoc.id}')">
-      Delete
-    </button>
-
-  </div>
-
-`;
+    `;
 
   });
-checkServicesLimit();
 }
 
 loadServices();
@@ -456,27 +441,23 @@ async function loadReviews(){
 
     const review = reviewDoc.data();
 
-   reviewsContainer.innerHTML += `
+    reviewsContainer.innerHTML += `
 
-  <div class="admin-project">
+      <div class="admin-project">
 
-    <img src="${review.image}">
+        <img src="${review.image}">
 
-    <div class="admin-project-content">
+        <h3>${review.name}</h3>
 
-      <h4>${review.name}</h4>
+        <p>${review.role}</p>
 
-      <p>${review.role}</p>
+        <button onclick="deleteReview('${reviewDoc.id}')">
+          Delete
+        </button>
 
-    </div>
+      </div>
 
-    <button onclick="deleteReview('${reviewDoc.id}')">
-      Delete
-    </button>
-
-  </div>
-
-`;
+    `;
 
   });
 
@@ -500,31 +481,3 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 
 });
-
-async function checkServicesLimit(){
-
-  const servicesSnapshot =
-  await getDocs(collection(db, "services"));
-
-  const serviceBtn =
-  document.getElementById("serviceBtn");
-
-  if(servicesSnapshot.size >= 7){
-
-    serviceBtn.disabled = true;
-
-    serviceBtn.innerText =
-    "LIMIT REACHED";
-
-  }
-
-  else{
-
-    serviceBtn.disabled = false;
-
-    serviceBtn.innerText =
-    "Upload Service";
-
-  }
-
-}
