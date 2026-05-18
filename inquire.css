@@ -1,0 +1,213 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,0.82),
+  rgba(0,0,0,0.88)),
+  url("../images/exterior.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:40px 20px;
+  color:white;
+}
+
+.inquire-container{
+  width:100%;
+  max-width:700px;
+
+  background:rgba(12,12,12,0.82);
+
+  backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  border-radius:32px;
+
+  padding:65px 55px;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,0.55);
+}
+
+.logo{
+  width:180px;
+
+  margin-bottom:25px;
+
+  object-fit:contain;
+
+  filter:
+  drop-shadow(0 0 20px rgba(245,196,0,0.18));
+}
+
+
+.small-title{
+  color:#f5c400;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:56px;
+
+  line-height:1.1;
+
+  margin-bottom:18px;
+
+  font-weight:800;
+}
+
+.description{
+  color:#bdbdbd;
+
+  line-height:1.8;
+
+  font-size:16px;
+
+  margin-bottom:40px;
+
+  max-width:500px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+input,
+textarea{
+  width:100%;
+
+  background:rgba(255,255,255,0.04);
+
+  border:1px solid rgba(255,255,255,0.04);
+
+  color:white;
+
+  padding:18px 22px;
+
+  border-radius:16px;
+
+  font-size:16px;
+
+  transition:0.3s;
+
+  outline:none;
+}
+
+textarea{
+  min-height:180px;
+  resize:none;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#8f8f8f;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#f5c400;
+
+  background:#1d1d1d;
+
+  box-shadow:
+  0 0 0 4px rgba(245,196,0,0.08);
+}
+
+button{
+  height:62px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:#f5c400;
+
+  color:black;
+
+  font-size:17px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.35s;
+}
+
+button:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 10px 25px rgba(245,196,0,0.25);
+
+  opacity:0.95;
+}
+
+.back-home{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:30px;
+
+  color:#f5c400;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  transition:0.3s;
+}
+
+.back-home:hover{
+  transform:translateX(-5px);
+}
+
+@media(max-width:768px){
+
+  .inquire-container{
+    padding:45px 25px;
+    border-radius:24px;
+  }
+
+  h1{
+    font-size:40px;
+  }
+
+  .description{
+    font-size:15px;
+  }
+
+  input,
+  textarea{
+    padding:16px 18px;
+  }
+
+  button{
+    height:58px;
+    font-size:16px;
+  }
+
+}

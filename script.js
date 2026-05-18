@@ -163,31 +163,31 @@ async function loadReviews(){
 
     reviewsGrid.innerHTML += `
 
-      <div class="review-card">
+<div class="review-card">
 
-        <div class="stars">
-          ${stars}
-        </div>
+  <div class="stars">
+    ${stars}
+  </div>
 
-        <p>
-          "${review.text}"
-        </p>
+  <p class="review-text">
+    "${review.text}"
+  </p>
 
-        <div class="review-user">
+  <div class="review-bottom">
 
-          <img src="${review.image}">
+    <img src="${review.image}" alt="">
 
-          <div>
+    <div>
 
-            <h4>${review.name}</h4>
+      <h4>${review.name}</h4>
 
-            <span>${review.role}</span>
+      <p>${review.role}</p>
 
-          </div>
+    </div>
 
-        </div>
+  </div>
 
-      </div>
+</div>
 
     `;
 
@@ -253,8 +253,8 @@ function updateSlider(){
 
   if(window.innerWidth <= 768){
 
-    slideWidth =
-    document.querySelector(".review-card").offsetWidth + 30;
+slideWidth =
+document.querySelector(".review-card").offsetWidth;
 
   }else{
 
@@ -302,53 +302,6 @@ setInterval(() => {
 
 
 
-reviewsGrid.addEventListener("touchstart", (e) => {
-
-  startX = e.touches[0].clientX;
-
-});
-
-reviewsGrid.addEventListener("touchend", (e) => {
-
-  endX = e.changedTouches[0].clientX;
-
-  handleSwipe();
-
-});
-
-function handleSwipe(){
-
-  const totalSlides =
-  document.querySelectorAll(".slider-dots span").length;
-
-  if(startX - endX > 50){
-
-    currentSlide++;
-
-    if(currentSlide >= totalSlides){
-
-      currentSlide = 0;
-
-    }
-
-  }
-
-  else if(endX - startX > 50){
-
-    currentSlide--;
-
-    if(currentSlide < 0){
-
-      currentSlide =
-      totalSlides - 1;
-
-    }
-
-  }
-
-  updateSlider();
-
-}
 let startX = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
