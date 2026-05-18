@@ -340,21 +340,25 @@ async function loadServices(){
 
     servicesPreview.innerHTML += `
 
-      <div class="admin-project">
+  <div class="admin-project">
 
-        <img src="${service.image}">
+    <img src="${service.image}">
 
-        <h3>${service.title}</h3>
+    <div class="admin-project-content">
 
-        <p>${service.description}</p>
+      <h4>${service.title}</h4>
 
-        <button onclick="deleteService('${serviceDoc.id}')">
-          Delete
-        </button>
+      <p>${service.description}</p>
 
-      </div>
+    </div>
 
-    `;
+    <button onclick="deleteService('${serviceDoc.id}')">
+      Delete
+    </button>
+
+  </div>
+
+`;
 
   });
 checkServicesLimit();
@@ -452,23 +456,27 @@ async function loadReviews(){
 
     const review = reviewDoc.data();
 
-    reviewsContainer.innerHTML += `
+   reviewsContainer.innerHTML += `
 
-      <div class="admin-project">
+  <div class="admin-project">
 
-        <img src="${review.image}">
+    <img src="${review.image}">
 
-        <h3>${review.name}</h3>
+    <div class="admin-project-content">
 
-        <p>${review.role}</p>
+      <h4>${review.name}</h4>
 
-        <button onclick="deleteReview('${reviewDoc.id}')">
-          Delete
-        </button>
+      <p>${review.role}</p>
 
-      </div>
+    </div>
 
-    `;
+    <button onclick="deleteReview('${reviewDoc.id}')">
+      Delete
+    </button>
+
+  </div>
+
+`;
 
   });
 

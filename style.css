@@ -579,29 +579,90 @@ footer{
   width:140px;
 }
 
+.menu-toggle{
+  display:none;
+  font-size:32px;
+  font-weight:700;
+  cursor:pointer;
+  color:#111;
+}
+
+/* HIDE MOBILE BUTTONS ON DESKTOP */
+.mobile-enquire,
+.mobile-login{
+  display:none;
+}
+
 @media(max-width:991px){
 
+   .menu-toggle{
+    display:block;
+  }
+
   /* HEADER */
+
   .navbar{
     justify-content:space-between;
   }
-
-  nav{
+   .nav-buttons{
     display:none;
   }
 
-  .nav-buttons{
-    gap:10px;
+  nav{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#fff;
+
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+
+    padding:30px 0;
+
+    display:none;
   }
+
+    nav.active{
+    display:flex;
+  }
+
+.mobile-enquire,
+.mobile-login{
+  display:none;
+  width:220px;
+  text-align:center;
+}
+
+.mobile-enquire{
+  background:#f4c400;
+  color:#111;
+  padding:14px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+}
+  
+
+.mobile-login{
+  border:2px solid #111;
+  padding:14px;
+  border-radius:10px;
+  text-align:center;
+  text-decoration:none;
+  color:#111;
+  font-weight:700;
+}
 
   .quote-btn,
   .login-btn{
-    padding:12px 18px;
-    font-size:13px;
+    padding:10px 16px;
+    font-size:12px;
   }
 
   .logo{
-    width:95px;
+    width:100px;
   }
 
   /* HERO */
@@ -742,6 +803,13 @@ footer{
     text-align:center;
   }
 
+      .mobile-enquire,
+  .mobile-login{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
 }
 @media(max-width:768px){
 
@@ -752,4 +820,12 @@ footer{
     margin-top:25px;
   }
 
+      .mobile-enquire,
+  .mobile-login{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
 }
+
