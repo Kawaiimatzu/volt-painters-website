@@ -16,6 +16,14 @@ const firebaseConfig = {
   measurementId: "G-XRSBC0PJE5"
 };
 
+const isLoggedIn =
+localStorage.getItem("voltAdmin");
+
+if(isLoggedIn === "true"){
+
+  window.location.href = "dashboard.html";
+
+}
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -33,6 +41,8 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
     .then((userCredential) => {
 
       alert("Login Successful!");
+
+      localStorage.setItem("voltAdmin", "true");
 
       window.location.href = "dashboard.html";
 

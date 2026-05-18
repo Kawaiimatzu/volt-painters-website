@@ -15,6 +15,15 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+const isLoggedIn =
+localStorage.getItem("voltAdmin");
+
+if(isLoggedIn !== "true"){
+
+  window.location.href = "login.html";
+
+}
+
 const aboutPreview =
 document.getElementById("aboutPreview");
 
@@ -477,6 +486,8 @@ const logoutBtn =
 document.getElementById("logoutBtn");
 
 logoutBtn.addEventListener("click", () => {
+
+  localStorage.removeItem("voltAdmin");
 
   window.location.href = "login.html";
 
