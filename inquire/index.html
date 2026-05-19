@@ -20,18 +20,20 @@
 
 <body>
 
-    <div class="inquire-container">
+<body>
 
-<img src="../images/logo.png"
-     alt="Volt Painters Logo"
-     class="logo">
+<div class="inquire-container">
+
+  <img src="../images/logo.png"
+       alt="Volt Painters Logo"
+       class="logo">
 
   <p class="small-title">
     VOLT PAINTERS
   </p>
 
   <h1>
-    Request A Quote
+    Get Professional Painting Services
   </h1>
 
   <p class="description">
@@ -39,41 +41,37 @@
     will contact you as soon as possible.
   </p>
 
-<form action="https://formsubmit.co/office@voltpainters.co.nz"
-      method="POST">
+  <form id="inquiryForm">
 
-  <input type="hidden"
-         name="_captcha"
-         value="false">
+      <input type="text"
+             name="name"
+             placeholder="Name"
+             required>
 
-  <input type="hidden"
-         name="_next"
-         value="https://voltpainters.co.nz/">
+      <input type="text"
+             name="phone"
+             placeholder="Phone Number"
+             required>
 
-  <input type="text"
-         name="name"
-         placeholder="Full Name"
-         required>
+      <input type="email"
+             name="email"
+             placeholder="Email Address"
+             required>
 
-  <input type="email"
-         name="email"
-         placeholder="Email Address"
-         required>
+      <input type="text"
+             name="address"
+             placeholder="Address"
+             required>
 
-  <input type="text"
-         name="phone"
-         placeholder="Phone Number"
-         required>
+      <textarea name="message"
+                placeholder="What do you need help with?"
+                required></textarea>
 
-  <textarea name="message"
-            placeholder="Tell us about your project"
-            required></textarea>
+      <button type="submit">
+        Submit Inquiry
+      </button>
 
-  <button type="submit">
-    Submit Inquiry
-  </button>
-
-</form>
+  </form>
 
   <a href="/"
      class="back-home">
@@ -83,6 +81,45 @@
   </a>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("e0rWXX_m3GdtbfQDk");
+
+const form =
+document.getElementById("inquiryForm");
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_he0bpu9",
+    "template_m1ynf2w",
+    this
+  )
+
+  .then(() => {
+
+    alert("Inquiry Sent Successfully!");
+
+    form.reset();
+
+  })
+
+  .catch((error) => {
+
+    alert("Failed To Send Inquiry");
+
+    console.log(error);
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
