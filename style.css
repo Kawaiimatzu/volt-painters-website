@@ -366,9 +366,6 @@ nav a{
   display:flex;
   flex-direction:column;
 
-  min-height:460px;
-  height:100%;
-
   border:1px solid rgba(255,255,255,0.06);
 
   transition:
@@ -434,18 +431,15 @@ nav a{
   color:#bdbdbd;
   line-height:1.9;
   font-size:17px;
-
-  flex:1;
-
-  margin-bottom:40px;
+  margin-bottom:30px;
 }
 
 .review-bottom{
   display:flex;
   align-items:center;
   gap:18px;
-
-  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
 
 .review-bottom img{
@@ -585,6 +579,22 @@ footer{
 .mobile-enquire,
 .mobile-login{
   display:none;
+}
+
+.reveal{
+
+  opacity:0;
+
+  transform:translateY(60px);
+
+  transition:1s ease;
+}
+
+.reveal.active{
+
+  opacity:1;
+
+  transform:translateY(0);
 }
 
 @media(max-width:991px){
@@ -838,4 +848,6 @@ margin-top:30px;
 }
 
 }
+
+
 
