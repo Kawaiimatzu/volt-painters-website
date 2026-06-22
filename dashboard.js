@@ -2,6 +2,13 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
   getFirestore,
   collection,
   addDoc,
@@ -14,15 +21,6 @@ import {
   getDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const isLoggedIn =
-localStorage.getItem("voltAdmin");
-
-if(isLoggedIn !== "true"){
-
-   window.location.href = "/login/";
-
-}
 
 const aboutPreview =
 document.getElementById("aboutPreview");
@@ -49,6 +47,18 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+
+  if(!user){
+
+    window.location.href = "/login/";
+
+  }
+
+});
 
 const db = getFirestore(app);
 
@@ -162,9 +172,30 @@ const querySnapshot = await getDocs(q);
 // DELETE PROJECT
 window.deleteProject = async function(id){
 
+  const result = await Swal.fire({
+    title: "Delete Project?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#f4c400",
+    cancelButtonColor: "#444",
+    confirmButtonText: "Yes, Delete",
+    cancelButtonText: "Cancel"
+  });
+
+  if(!result.isConfirmed) return;
+
   await deleteDoc(doc(db,"projects",id));
 
   loadProjects();
+
+  Swal.fire({
+    icon: "success",
+    title: "Deleted!",
+    text: "Project deleted successfully.",
+    timer: 1500,
+    showConfirmButton: false
+  });
 
 }
 
@@ -182,7 +213,12 @@ aboutBtn.addEventListener("click", async () => {
 
   if(existingAbout){
 
-    alert("Delete current About Image first.");
+Swal.fire({
+  icon: "warning",
+  title: "Image Already Exists",
+  text: "Delete the current About image first.",
+  confirmButtonColor: "#f4c400"
+});
 
     return;
 
@@ -219,7 +255,12 @@ aboutBtn.addEventListener("click", async () => {
 
   });
 
-alert("About Image Updated!");
+Swal.fire({
+  icon: "success",
+  title: "About Image Updated!",
+  text: "Changes saved successfully.",
+  confirmButtonColor: "#f4c400"
+});
 
 aboutBtn.disabled = true;
 aboutBtn.style.opacity = "0.5";
@@ -265,19 +306,37 @@ async function loadAboutPreview(){
 
 loadAboutPreview();
 
-window.deleteAboutImage =
-async function(){
+window.deleteAboutImage = async function(){
+
+  const result = await Swal.fire({
+    title: "Delete About Image?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#f4c400",
+    cancelButtonColor: "#444",
+    confirmButtonText: "Yes, Delete",
+    cancelButtonText: "Cancel"
+  });
+
+  if(!result.isConfirmed) return;
 
   await setDoc(doc(db,"website","about"), {
-
     image:""
-
   });
 
   aboutPreview.innerHTML = "";
 
   aboutBtn.disabled = false;
-aboutBtn.style.opacity = "1";
+  aboutBtn.style.opacity = "1";
+
+  Swal.fire({
+    icon: "success",
+    title: "Deleted!",
+    text: "About image deleted successfully.",
+    timer: 1500,
+    showConfirmButton: false
+  });
 
 }
 const serviceBtn =
@@ -289,9 +348,6 @@ document.getElementById("servicesPreview");
 
 // UPLOAD SERVICE
 serviceBtn.addEventListener("click", async () => {
-
-  const servicesSnapshot =
-await getDocs(collection(db, "services"));
 
   const title =
   document.getElementById("serviceTitle").value;
@@ -336,7 +392,12 @@ await getDocs(collection(db, "services"));
 
   });
 
-  alert("Service Uploaded!");
+  Swal.fire({
+  icon: "success",
+  title: "Service Uploaded!",
+  text: "Your service has been added successfully.",
+  confirmButtonColor: "#f4c400"
+});
 
   loadServices();
 
@@ -385,12 +446,32 @@ loadServices();
 
 
 // DELETE SERVICE
-window.deleteService =
-async function(id){
+window.deleteService = async function(id){
+
+  const result = await Swal.fire({
+    title: "Delete Service?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#f4c400",
+    cancelButtonColor: "#444",
+    confirmButtonText: "Yes, Delete",
+    cancelButtonText: "Cancel"
+  });
+
+  if(!result.isConfirmed) return;
 
   await deleteDoc(doc(db,"services",id));
 
   loadServices();
+
+  Swal.fire({
+    icon: "success",
+    title: "Deleted!",
+    text: "Service deleted successfully.",
+    timer: 1500,
+    showConfirmButton: false
+  });
 
 }
 
@@ -451,7 +532,12 @@ reviewBtn.addEventListener("click", async () => {
 
   });
 
-  alert("Review Uploaded!");
+Swal.fire({
+  icon: "success",
+  title: "Review Uploaded!",
+  text: "Review added successfully.",
+  confirmButtonColor: "#f4c400"
+});
 
   loadReviews();
 
@@ -497,18 +583,41 @@ async function loadReviews(){
 
 loadReviews();
 
-window.deleteReview =
-async function(id){
+window.deleteReview = async function(id){
+
+  const result = await Swal.fire({
+    title: "Delete Review?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#f4c400",
+    cancelButtonColor: "#444",
+    confirmButtonText: "Yes, Delete",
+    cancelButtonText: "Cancel"
+  });
+
+  if(!result.isConfirmed) return;
 
   await deleteDoc(doc(db,"reviews",id));
 
   loadReviews();
 
+  Swal.fire({
+    icon: "success",
+    title: "Deleted!",
+    text: "Review deleted successfully.",
+    timer: 1500,
+    showConfirmButton: false
+  });
+
 }
+
 const logoutBtn =
 document.getElementById("logoutBtn");
 
-logoutBtn.addEventListener("click", () => {
+logoutBtn.addEventListener("click", async () => {
+
+  await signOut(auth);
 
   localStorage.removeItem("voltAdmin");
 
